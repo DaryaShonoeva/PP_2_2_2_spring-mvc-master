@@ -25,4 +25,10 @@ public class CarController {
             model.addAttribute("carsId", carDAO.show(Integer.parseInt(i)));
         return "cars";
     }
+
+    @GetMapping(value = "/cars")
+    public String printCars(ModelMap model) {
+        model.addAttribute("carsId", carDAO.show(Integer.parseInt(String.valueOf(5))));
+        return "cars";
+    }
 }
