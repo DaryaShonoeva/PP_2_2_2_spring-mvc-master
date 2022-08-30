@@ -22,9 +22,9 @@ public class CarServiceImpl implements CarService{
 
     }
 
-    public List<Car> show(int i) {
+    public List<Car> show(String i) {
         return cars.stream()
-                .filter(s -> s.getId() <= i)
+                .filter(s -> s.getId() <= Integer.parseInt(i))
                 .collect(Collectors.toList());
     }
 

@@ -19,13 +19,13 @@ public class CarController {
 
     @GetMapping(value = "/carscount={i}")
     public String printCars(ModelMap model, @PathVariable String i) {
-            model.addAttribute("carsId", carService.show(Integer.parseInt(i)));
+            model.addAttribute("carsId", carService.show(i));
         return "cars";
     }
 
     @GetMapping(value = "/cars")
     public String printCars(ModelMap model) {
-        model.addAttribute("carsId", carService.show(Integer.parseInt(String.valueOf(5))));
+        model.addAttribute("carsId", carService.show(String.valueOf(5)));
         return "cars";
     }
 }
