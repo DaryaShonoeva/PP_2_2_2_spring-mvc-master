@@ -5,30 +5,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import web.dao.CarDAO;
-import web.model.Car;
+import web.services.CarService;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class CarController {
-    private final CarDAO carDAO;
+    private final CarService carService;
 
     @Autowired
-    public CarController(CarDAO carDAO) {
-        this.carDAO = carDAO;
+    public CarController(CarService carService) {
+        this.carService = carService;
     }
 
     @GetMapping(value = "/carscount={i}")
     public String printCars(ModelMap model, @PathVariable String i) {
-            model.addAttribute("carsId", carDAO.show(Integer.parseInt(i)));
+            model.addAttribute("carsId", carService.show(Integer.parseInt(i)));
         return "cars";
     }
 
     @GetMapping(value = "/cars")
     public String printCars(ModelMap model) {
-        model.addAttribute("carsId", carDAO.show(Integer.parseInt(String.valueOf(5))));
+        model.addAttribute("carsId", carService.show(Integer.parseInt(String.valueOf(5))));
         return "cars";
     }
 }
